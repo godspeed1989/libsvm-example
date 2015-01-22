@@ -1,18 +1,16 @@
 #!/bin/sh
 
-
 # If we already have libsvm installed, make sure it is up to date
 if [ -d "libsvm" ]; then
 	cd ./libsvm
 	git fetch origin
-	git pull 
+	git pull
 	cd ..
 fi
 
-
 # If we don't have it, install it locally, here
 if [ ! -d "libsvm" ]; then
-	git clone https://github.com/cjlin1/libsvm.git
+	git clone https://github.com/cjlin1/libsvm.git --depth 1
 fi
 
 # Build executables
@@ -30,18 +28,17 @@ cd ./libsvm
 if [ ! -d "bin" ]; then
 	mkdir bin
 fi
-mv svm-train ./bin/svm-train
-mv svm-predict ./bin/svm-predict
-mv svm-scale ./bin/svm-scale
-mv ./matlab/libsvmread.mexmaci64 ./bin/libsvmread.mexmaci64
-mv ./matlab/libsvmwrite.mexmaci64 ./bin/libsvmwrite.mexmaci64
-mv ./matlab/svmtrain.mexmaci64 ./bin/svmtrain.mexmaci64
-mv ./matlab/svmpredict.mexmaci64 ./bin/svmpredict.mexmaci64
+cp svm-train   ./bin/
+cp svm-predict ./bin/
+cp svm-scale   ./bin/
+cp ./matlab/libsvmread.mex*  ./bin/
+cp ./matlab/libsvmwrite.mex* ./bin/
+cp ./matlab/svmtrain.mex*    ./bin/
+cp ./matlab/svmpredict.mex*  ./bin/
 cd ..
 
 # Additional Tools
 # ROC-Curve tool
-wget http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/roc/plotroc.m
+# wget http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/roc/plotroc.m
 mv plotroc.m ./libsvm/tools/plotroc.m
-
 
