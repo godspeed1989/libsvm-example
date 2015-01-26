@@ -19,7 +19,7 @@ if [ -f "mnist.scale" ]; then
 fi
 if [ ! -f "mnist.scale" ]; then
 	#wget http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/mnist.scale.bz2
-	bzip2 -d mnist.scale.bz2
+	bzip2 -dk mnist.scale.bz2
 fi
 
 # test data
@@ -28,6 +28,6 @@ if [ -f "mnist.scale.t" ]; then
 fi
 if [ ! -f "mnist.scale.t" ]; then
 	#wget http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/mnist.scale.t.bz2
-	bzip2 -d mnist.scale.t.bz2
+	bzip2 -dk mnist.scale.t.bz2
 fi
 
